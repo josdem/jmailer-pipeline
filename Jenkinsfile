@@ -5,7 +5,7 @@ pipeline {
       stage('Stop Jmailer') {
         steps {
           echo 'Stopping Jmailer'
-          sh 'sudo systemctl status jmailer'
+          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/hello.sh"'
           echo 'Done!'
         }
       }
