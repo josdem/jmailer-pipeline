@@ -5,7 +5,7 @@ pipeline {
       stage('Stop Jmailer') {
         steps {
           echo 'Stopping Jmailer'
-          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/hello.sh"'
+          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/stop-jmailer.sh"'
           echo 'Done!'
         }
       }
