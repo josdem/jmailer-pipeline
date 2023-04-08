@@ -2,9 +2,11 @@
 pipeline {
   agent any
     stages {
-      stage('build') {
+      stage('Stop Jmailer') {
         steps {
-          echo 'Hello World!'
+          echo 'Stopping Jmailer'
+          sh 'sudo systemctl status jmailer'
+          echo 'Done!'
         }
       }
    }
