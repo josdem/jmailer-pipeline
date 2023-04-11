@@ -9,5 +9,26 @@ pipeline {
           echo 'Done!'
         }
       }
+      stage('Remove Jmailer') {
+        steps {
+          echo 'Stopping Jmailer'
+          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/remove-jmailer.sh"'
+          echo 'Done!'
+        }
+      }
+      stage ('Build Jmailer Job') {
+        steps {
+          echo 'Starting Build Job'
+          build job: 'jmailer-spring-boot'
+          echo 'Done!'
+        }
+      }
+      stage('Start Jmailer') {
+        steps {
+          echo 'Starting Jmailer'
+          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/start-jmailer.sh"'
+          echo 'Done!'
+        }
+      }
    }
 }
