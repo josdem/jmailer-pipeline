@@ -23,6 +23,13 @@ pipeline {
           echo 'Done!'
         }
       }
+      stage('Move Jmailer') {
+        steps {
+          echo 'Moving Jmailer'
+          sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/move-jmailer.sh"'
+          echo 'Done!'
+        }
+      }
       stage('Start Jmailer') {
         steps {
           echo 'Starting Jmailer'
