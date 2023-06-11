@@ -25,7 +25,7 @@ pipeline {
             } catch (error){
               print "Jmailer build failed!"
               script {
-                build job: 'jenkins-jmailer'
+                build job: 'jenkins-sandbox'
               }
               sh "exit 1"
             }
