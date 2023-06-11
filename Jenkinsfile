@@ -24,6 +24,9 @@ pipeline {
               build job: 'jmailer-spring-boot'
             } catch (error){
               print "Jmailer build failed!"
+              script {
+                build job: 'jenkins-jmailer'
+              }
               sh "exit 1"
             }
           }
