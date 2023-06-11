@@ -2,6 +2,7 @@
 pipeline {
   agent any
     stages {
+      def error = false
       stage('Stop Jmailer') {
         steps {
           echo 'Stopping Jmailer'
@@ -23,10 +24,13 @@ pipeline {
               try {
                 build job: 'jmailer-spring-boot'
               } catch (error) {
-                echo 'Jmailer build failed: Sending an email...'
-                build job: 'jenkins-jmailer'
+                error = true
               }
             }
+          }
+          if(error) {
+            echo 'Jmailer build failed: Sending an email...'
+            build job: 'jenkins-jmailer'
           }
           echo 'Done!'
       }
