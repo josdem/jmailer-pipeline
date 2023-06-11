@@ -20,17 +20,8 @@ pipeline {
       stage ('Build Jmailer Job') {
         steps {
           echo 'Starting Build Job'
-          script {
-            try {
-              build job: 'jmailer-spring-boot'
-            } catch (exception) {
-              error = true
-            }
-          }
-          if(error) {
-            echo 'Jmailer build failed: Sending an email...'
-            build job: 'jenkins-jmailer'
-          }
+          build job: 'jmailer-spring-boot'
+          print "Result: ${currentBuild.result}"
           echo 'Done!'
         }
       }
