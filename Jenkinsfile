@@ -1,6 +1,5 @@
 #!/usr/bin/env groovy
 pipeline {
-  def error
   agent any
     stages {
       stage('Stop Jmailer') {
