@@ -23,7 +23,7 @@ pipeline {
             script {
               try {
                 build job: 'jmailer-spring-boot'
-              } catch (error) {
+              } catch (exception) {
                 error = true
               }
             }
