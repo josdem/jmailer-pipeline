@@ -20,7 +20,7 @@ pipeline {
         steps {
           echo 'Starting Build Job'
           build job: 'jmailer-spring-boot'
-          catchError(stageResult: 'FAILURE') {
+          catchError {
             echo 'ERROR!'
           }
           echo 'Done!'
