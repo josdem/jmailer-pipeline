@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 pipeline {
+  def error
   agent any
     stages {
       stage('Stop Jmailer') {
@@ -19,7 +20,6 @@ pipeline {
       stage ('Build Jmailer Job') {
         steps {
           echo 'Starting Build Job'
-          def error
           script {
             try {
               build job: 'jmailer-spring-boot'
