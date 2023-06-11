@@ -27,7 +27,6 @@ pipeline {
             }
           }
           echo 'Done!'
-        }
       }
       stage('Move Jmailer') {
         steps {
