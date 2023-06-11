@@ -23,7 +23,7 @@ pipeline {
             try {
               build job: 'jmailer-spring-boot'
             } catch (error){
-              print "Result: ${currentBuild.result}"
+              print "Jmailer build failed!"
             }
           }
           echo 'Done!'
