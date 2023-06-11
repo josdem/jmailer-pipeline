@@ -21,7 +21,7 @@ pipeline {
           echo 'Starting Build Job'
           build job: 'jmailer-spring-boot'
           catchError {
-            echo 'ERROR!'
+            build job: 'jenkins-jmailer'
           }
           echo 'Done!'
         }
