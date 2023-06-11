@@ -25,6 +25,7 @@ pipeline {
               build job: 'jenkins-jmailer'
             }
           echo 'Done!'
+        }
       }
       stage('Move Jmailer') {
         steps {
