@@ -11,7 +11,7 @@ pipeline {
       }
       stage('Remove Jmailer') {
         steps {
-          echo 'Stopping Jmailer'
+          echo 'Removing Jmailer'
           sh 'ssh josdem@jmailer.josdem.io "/home/josdem/deploys/remove-jmailer.sh"'
           echo 'Done!'
         }
@@ -20,6 +20,9 @@ pipeline {
         steps {
           echo 'Starting Build Job'
           build job: 'jmailer-spring-boot'
+          catchError(stageResult: 'FAILURE') {
+            echo 'ERROR!'
+          }
           echo 'Done!'
         }
       }
