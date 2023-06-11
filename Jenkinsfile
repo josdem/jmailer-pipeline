@@ -16,10 +16,10 @@ pipeline {
           echo 'Done!'
         }
       }
-      def error
       stage ('Build Jmailer Job') {
         steps {
           echo 'Starting Build Job'
+          def error
           script {
             try {
               build job: 'jmailer-spring-boot'
