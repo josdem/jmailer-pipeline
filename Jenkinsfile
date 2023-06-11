@@ -19,13 +19,16 @@ pipeline {
       stage ('Build Jmailer Job') {
         steps {
           echo 'Starting Build Job'
-            build job: 'jmailer-spring-boot'
-            catchError {
-              echo 'Jmailer build failed: Sending an email...'
-              build job: 'jenkins-jmailer'
+            script {
+              try {
+                build job: 'jmailer-spring-boot'
+              } catch (error) {
+                echo 'Jmailer build failed: Sending an email...'
+                build job: 'jenkins-jmailer'
+              }
             }
+          }
           echo 'Done!'
-        }
       }
       stage('Move Jmailer') {
         steps {
