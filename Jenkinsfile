@@ -17,24 +17,16 @@ pipeline {
         }
       }
       stage ('Build Jmailer Job') {
-       /*
         steps {
           echo 'Starting Build Job'
-          build job: 'jmailer-spring-boot'
-          print "Result: ${currentBuild.result}"
+          script {
+            try {
+              build job: 'jmailer-spring-boot'
+            } catch (error){
+              print "Result: ${currentBuild.result}"
+            }
+          }
           echo 'Done!'
-        }
-        */
-        options {
-          catchError(message: "Test failed", stageResult: 'UNSTABLE', buildResult: 'UNSTABLE')
-        }
-        stages {
-          stage('Test 1') {
-            echo 'test 1 succeeded'
-          }
-          stage('Test 2') {
-            error 'test 2 failed'
-          }
         }
       }
       stage('Move Jmailer') {
