@@ -17,8 +17,8 @@ pipeline {
         }
       }
       stage ('Build Jmailer Job') {
-        def error
         steps {
+          def error
           echo 'Starting Build Job'
           script {
             try {
